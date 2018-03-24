@@ -1,0 +1,341 @@
+h1 {
+    color: rgb(218, 218, 218);
+    text-shadow: 3 8px 10px drakgrey;
+    padding: 30px;
+}
+
+a {
+    color: mediumblue;
+}   
+
+/* Buttun of Twitter and Spotify on main page (right-side) */
+#button-all {
+    position: fixed;
+    bottom: 180px;
+    right: -4px;
+    z-index: 1000;
+    margin-bottom: 0%;
+}
+
+/* Movie search results */
+#result {
+    width: 284%;
+    height: 284%;
+    display: -webkit-flex; /* Setting display result */
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left: 18%;
+}
+
+/* Top bar */
+.navbar {
+    margin-bottom: 0;
+    background-color: #b3391d;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #b3391d;
+    padding: 13px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Google search */
+.topnav .search-container {
+    float: right;
+    margin-right: 15px;
+}
+
+/* Button of Google search */
+.topnav .search-container btn {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.topnav .search-container btn:hover {
+    background: #ccc;
+}
+
+/* Results of google search */
+#output {
+    background-color: white; 
+    text-align: left;
+}
+
+.hcHead2 {
+    font-size: 18px; 
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.bg-google {
+    background-color: #ddd;
+    padding: 3% 5%;
+}
+
+body {
+    height: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin: 0;
+    background-image: url(img/Background-Narrow.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: black;
+}
+
+/* Main searching */
+.jumbotron {
+    color: #fff;
+    padding: 18% 14% 5%;
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 5%;
+    background-image: url(img/Background-Narrow.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: black;
+    width: 100%;
+}
+
+/* Searching Part */
+.search-field {
+    moz-box-sizing: border-box;
+    webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 25%;
+    height: 50%;
+    padding: 5px 7px;
+    background: #fff;
+    border: 1px solid #c8c8c8;
+    font-size: 1.4em;
+    border-radius: 0.5px;
+    -moz-box-shadow: inset 0 1px 0px rgba(0,0,0,0.1), 0 0 0 3px #f0f0f0;
+    -wbekit-box-shadow: inset 0 0px 1px rgba(0,0,0,0.1), 0 0 0 3px #f0f0f0;
+    box-shadow: inset 0 1px 0px rgba(0,0,0,0.1), 0 0 0 3px #f0f0f0;
+    color: black;
+}
+
+/* Button of Movie search */
+.btn-movie {
+    margin-left: 5px;
+    position: relative;
+    background-color: #f8f8f8;
+    border: none;
+    font-size: 14px;
+    color: dimgray;
+    padding: 8px;
+    width: 40px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 1px;
+}
+
+.btn-movie:after {
+    content: "";
+    background: black;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.btn-movie:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+#find {
+    margin-left: 100px;
+}
+
+/* All Pop-up (Modal) */
+.modal {
+    display: none;
+    position: fixed;
+    padding-top: 100px; 
+    padding-bottom: 100px;
+    left: 50;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    align-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 60%;
+}
+
+.modal-header, h5, .close {
+    background-color: #f9f9f9;
+    color:dimgray !important;
+    text-align: center;
+    font-size: 20px;
+}
+
+.modal-body {
+    background-color: #fefefe;
+    margin-top: 3%;
+    margin-bottom: 1%;
+    margin-left: 30px;
+    width: 90%;
+}
+
+.modal-footer {
+    background-color: #f9f9f9;
+    align-content: center;
+}
+
+/* The Close Button on Google, Twitter and Spotify */
+.close {
+    color: dimgray;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Movie searching results */
+.movie-container {
+    position: relative;
+    width: 80%;
+    padding: 0 10px;
+    margin-bottom: 5%;
+    backface-visibility: hidden;
+}
+
+.movie {
+    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    margin-bottom: 10px;
+    width: 30%;
+}
+
+.movie-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.movie-body {
+    -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Movie search result on Preview part */
+
+#movie-btn {
+    padding: 2.7% 4% 2.7%;
+    background-color: white;
+    color: dimgray;
+    border: 1px solid rgba(1, 1, 1, 0.125);
+    border-radius: 2rem;
+    margin-left: 37%;
+}
+
+#movie-btn:hover {
+    padding: 2.7% 4% 2.7%;
+    background-color: #f1f1f1;
+    color: dimgray;
+    border: 1px solid rgba(1, 1, 1, 0.125);
+    border-radius: 2rem;
+    margin-left: 37%;
+}
+
+tr, td {
+    padding: 20px;
+}
+
+.movie-title-preview {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+img.sticky {
+    position: -webkit-sticky;
+    position: sticky; 
+    top: 0;
+    vertical-align: top;
+}
+
+.movie-description {
+  margin-bottom: 1rem;
+}
+
+/* Pages of movie searching result */
+#buttons {
+    margin-left: 255%;
+    display: inline;
+}
+
+#prevbutton, #nextbutton {
+    background-color: white;
+    color: dimgray;
+    border: 1px solid rgba(1, 1, 1, 0.125);
+    border-radius: 2rem;
+}
+
+#prevbutton:hover, #nextbutton:hover {
+    background-color: #f1f1f1;
+    color: dimgray;
+    border: 1px solid rgba(1, 1, 1, 0.125);
+    border-radius: 2rem;
+}
+
+footer {
+    padding-top: 1.5%;
+    padding-bottom: 2.5%;
+    color: white;
+    text-align: center;
+    margin-top: 2.5%;
+}

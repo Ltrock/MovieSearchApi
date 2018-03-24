@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>  
+    
+<head>
+
+    <title>Group 5 | 2nd Project ITCS210 Web Programing</title> 
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> 
+    <script src="application.js" ></script> <!--receive data from application.js-->
+    <script src="google.js" ></script><!--receive dat of google search from application.js-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" id="viewport" content="target-densitydpi=high-dpi,initial-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        html {
+            box-sizing: content-box;
+            margin-top: -5%;
+        }
+    </style>
+   
+</head>
+   
+<body>
+  
+     <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="topnav">
+            <div class="search-container">
+                <input type="text" id="txtSearchTerm"> <!--input text of gppgle search-->
+                    <button id="btnSearch" class="btn-default btn-md"> <!--submit button to search google-->
+                    Search <span class="glyphicon glyphicon-search"></span></button> <!--submit input to google custim search-->
+                <div class="modal fade" id="myMod"> <!--show result in modal(popup)-->
+                    <div class="modal-content">
+                        <div class="modal-header" style="padding: 20px 40px"> <!--modal header-->
+                            <button type="button" class="close" data-dismiss="modal">&times;</button> <!--button to click close in google custom-->
+<!--                            <h4 class="modal-title">Google</h4>-->
+                             <img class="modal-title" src="img/google-title.png" width="100px" height="auto"> <!--show google logo when the result happen-->
+                        </div>
+                        <div class="modal-body" style="padding:20px 40px">  <!--modal body-->
+                            <div id="searchResult"></div><br> <!--show number page found-->
+                                <div id="output"></div> <!--show result of gollgle search-->
+                        </div>
+                        <div class="modal-footer"> <!--modal footer(below of modal)-->
+                            <button type="submit" class="btn btn-default pull-right" data-dismiss="modal">
+                                <span class="glyphicon glyphicon-remove"></span> Cancel</button> <!--cancle(close) google page-->
+                        </div>         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="container">
+            
+        <div class="col-lg-12"> <!--set bootstrap to be 12 parts-->
+            <div class="row">
+                <div id="main" class="jumbotron" align="center">
+                    <img src="img/logo_main.png" width="500" height="auto"> <!--show image of movie search-->
+                        <form id="searching" onsubmit="return search()"> <!--sent input that user type to functon search in application.js-->
+                            <input type="search" id="find" placeholder="Search Video" class="search-field" required> <!--box to input movie name-->
+                            <button type="submit" id="search-btn" class="btn-movie btn-default btn-md"><!--submit movie name -->
+                            <span class="glyphicon glyphicon-search"></span></button>                 
+                        </form>
+                </div>
+            </div>
+
+            <div class="col-lg-8"> <!--set 8 parts to display movie search-->
+                <div class="movie-container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-2 sm-2"> 
+                            <div id="result"></div><br> <!--display movie -->
+                            <div id="buttons"></div><br> <!--display next/previous page-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="button-all">
+
+        <!--Twitter-->
+            <!-- Trigger/Open The Modal -->
+            <button style="font-size:24px" class="myBtn_multi btn btn-default btn-sm">
+                <img src="img/twt-lg.png" width="auto" height="25px"></button> <!--twitter logo for click to see movie comment-->
+
+                <!-- Modal -->
+                <div class="modal modal_multi">
+
+                        <!-- Modal content-->
+                        <div id="twt-header" class="modal-content">
+                            <div class="modal-header" style="padding: 20px 40px"> <!--modal header of twitter-->
+                                <span class="close close_multi">×</span> <!--x to close modal-->
+                                <img class="modal-title" src="img/twt-title.png" width="150px" height="auto"> <!--twitter logo in modal-->
+                            </div>
+
+                            <div class="modal-body"> <!--modal body of twitter-->
+                                <div id="txtHint"></div> <!--show result of twitter-->
+                            </div>
+
+                            <div class="modal-footer"> <!--modal footer of twitter-->
+                                <a href="#twt-header" title="To Top">back to top</a><br> <!--back to top in twitter-->
+                            </div>
+                        </div>
+                </div><br>
+
+        <!--Spontify-->
+            <button style="font-size:26px" class="myBtn_multi btn-default btn-sm">
+                <img src="img/spt-lg.png" width="auto" height="25px"></button> <!--spontify logo for click to see movie soundtrack-->
+
+                <!-- The Modal -->
+                <div class="modal modal_multi">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <div id="spt-header" class="modal-header" style="padding: 20px 30px">  <!--modal header of spontify-->
+                                <span class="close close_multi">×</span> <!--x to close modal-->
+                                <img src="img/spt-lg.png" width="auto" height="30px" style="margin-right: 0.5%"> <!--spontify logo in modal-->
+                                <img class="modal-title" src="img/spotify-title.png" width="auto" height="50px">
+                            </div>
+
+                            <div class="modal-body">  <!--modal body of spontify-->
+                                <div id="spon" align="center"></div> <!--show result of spotify-->
+                            </div>
+
+                            <div class="modal-footer"> <!--modal footer of spontify-->
+                                <a href="#spt-header" title="To Top">back to top</a><br> <!--back to top in spotify-->
+                            </div>
+                        </div>
+                </div>
+        </div>
+        
+    </div>
+    <!---script to control the modal-->
+    <script>
+
+        // Get the modal
+        var modalparent = document.getElementsByClassName("modal_multi");
+
+        // Get the button that opens the modal
+        var modal_btn_multi = document.getElementsByClassName("myBtn_multi");
+
+        // Get the <span> element that closes the modal
+        var span_close_multi = document.getElementsByClassName("close_multi");
+
+        // When the user clicks the button, open the modal
+        function setDataIndex() {
+
+            for (i = 0; i < modal_btn_multi.length; i++)
+            {
+                modal_btn_multi[i].setAttribute('data-index', i);
+                modalparent[i].setAttribute('data-index', i);
+                span_close_multi[i].setAttribute('data-index', i);
+            }
+        }
+
+        for (i = 0; i < modal_btn_multi.length; i++)
+        {
+            modal_btn_multi[i].onclick = function() {
+                var ElementIndex = this.getAttribute('data-index');
+                modalparent[ElementIndex].style.display = "block";
+            };
+
+            // When the user clicks on <span> (x), close the modal
+            span_close_multi[i].onclick = function() {
+                var ElementIndex = this.getAttribute('data-index');
+                modalparent[ElementIndex].style.display = "none";
+            };
+        }
+
+        window.onload = function() {
+            setDataIndex();
+        };
+
+        window.onclick = function(event) {
+            if (event.target === modalparent[event.target.getAttribute('data-index')]) {
+                modalparent[event.target.getAttribute('data-index')].style.display = "none";
+            }
+
+            // OLD CODE
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = modal.getElementsByClassName("close")[0]; // Modified by dsones uk
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+    </script>
+    
+    <script>
+        $(document).ready(function(){
+        $("#btnSearch").click(function(){
+        $("#myMod").modal();
+    });
+});
+    </script>
+    
+</body>
+
+<footer class="text-center">
+    <a href="#main" title="To Top"><span class="glyphicon glyphicon-chevron-up" style="color: #f9f9f9"></span></a><br>
+    <font size="2">Copyright &copy; 2017 Group 5 Reserved <br> 2nd Project ITCS210 Web Programing &#x2714;</font>
+</footer>
+    
+</html>
